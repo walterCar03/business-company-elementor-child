@@ -82,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
         '.um-profile .um-profile-photo .um-dropdown-b .um-reset-profile-photo': 'Supprimer la photo',
         '.um-profile .um-profile-photo .um-dropdown-b .um-dropdown-hide': 'Annuler'
     };
-
     Object.entries(profileOptions).forEach(([selector, text]) => {
         document.querySelectorAll(selector).forEach(el => el.textContent = text);
     });
@@ -94,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
         '#um-error-for-user_email-2679': 'You must provide your email',
         '#um-error-for-user_password-2679': 'Mot de passe is required'
     };
-
     Object.entries(errorMessagesReg).forEach(([selector, original]) => {
         const element = document.querySelector(selector);
         if (element) {
@@ -109,7 +107,6 @@ document.addEventListener('DOMContentLoaded', function() {
         '#um-error-for-username-28': 'Please enter your username or email',
         '#um-error-for-user_password-28': 'Please enter your password',
     };
-
     Object.entries(errorMessagesLogin).forEach(([selector, original]) => {
         const element = document.querySelector(selector);
         if (element) {
@@ -118,4 +115,146 @@ document.addEventListener('DOMContentLoaded', function() {
                 : "Veuillez entrer votre nom d'utilisateur ou votre e-mail");
         }
     });
+
+    // Manejar mensajes de error de reset password
+    const errorMessageResetPass = {
+        '#um-error-for-user_password': 'You must enter a new password',
+        '#um-error-for-confirm_user_password': 'You must confirm your new password'
+    }
+    Object.entries(errorMessageResetPass).forEach(([selector, original]) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.innerHTML = element.innerHTML.replace(original, original.startsWith('You must enter') 
+                ? "Vous devez entrer un nouveau mot de passe" 
+                : "Vous devez confirmer votre nouveau mot de passe");
+        }
+    });
+
+    // Manejar mensajes de error de relas de longitud del password en regitro de inspecteur
+    const errorMessageRegInspecteurPassRuleLong = {
+        '#um-error-for-user_password-27': {
+            original: /Your Mot de passe must contain at least 8 characters/i,
+            replacement: 'Votre Mot de passe doit contenir au moins 8 caractères'
+        }
+    };
+    Object.entries(errorMessageRegInspecteurPassRuleLong).forEach(([selector, {original, replacement}]) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.innerHTML = element.innerHTML.replace(
+                original, 
+                replacement
+            );
+        }
+    });
+    
+    // Manejar mensajes de error de relas de caracteres del password en regitro de inspecteur
+    const errorMessageRegInspecteurPassRuleCharters = {
+        '#um-error-for-user_password-27': {
+            original: /Your password must contain at least one lowercase letter, one capital letter and one number/i,
+            replacement: 'Votre mot de passe doit contenir au moins une lettre minuscule, une lettre majuscule et un chiffre'
+        }
+    };
+    Object.entries(errorMessageRegInspecteurPassRuleCharters).forEach(([selector, {original, replacement}]) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.innerHTML = element.innerHTML.replace(
+                original, 
+                replacement
+            );
+        }
+    });
+
+    // Manejar mensajes de error de relas de longitud del password en regitro de courtier
+    const errorMessageRegCourtierPassRuleLong = {
+        '#um-error-for-user_password-2679': {
+            original: /Your Mot de passe must contain at least 8 characters/i,
+            replacement: 'Votre Mot de passe doit contenir au moins 8 caractères'
+        }
+    };
+    Object.entries(errorMessageRegCourtierPassRuleLong).forEach(([selector, {original, replacement}]) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.innerHTML = element.innerHTML.replace(
+                original, 
+                replacement
+            );
+        }
+    });
+
+    // Manejar mensajes de error de relas de caracteres del password en regitro de courtier
+    const errorMessageRegCourtierPassRuleCharters = {
+        '#um-error-for-user_password-2679': {
+            original: /Your password must contain at least one lowercase letter, one capital letter and one number/i,
+            replacement: 'Votre mot de passe doit contenir au moins une lettre minuscule, une lettre majuscule et un chiffre'
+        }
+    };
+    Object.entries(errorMessageRegCourtierPassRuleCharters).forEach(([selector, {original, replacement}]) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.innerHTML = element.innerHTML.replace(
+                original, 
+                replacement
+            );
+        }
+    });
+
+    // Manejar mensajes de error de password no match
+    const errorMessageRegNotMatch = {
+        '#um-error-for-confirm_user_password-27': {
+            original: /Your passwords do not match/i,
+            replacement: 'Vos mots de passe ne correspondent pas'
+        },
+        '#um-error-for-confirm_user_password-2679': {
+            original: /Your passwords do not match/i,
+            replacement: 'Vos mots de passe ne correspondent pas'
+        }
+    };
+    Object.entries(errorMessageRegNotMatch).forEach(([selector, {original, replacement}]) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.innerHTML = element.innerHTML.replace(
+                original, 
+                replacement
+            );
+        }
+    });
+
+    // Manejar mensajes de error de confirmar el password
+    const errorMessageRegCourtierContirmPass = {
+        '#um-error-for-confirm_user_password-27': {
+            original: /Please confirm your password/i,
+            replacement: 'Veuillez confirmer votre mot de passe'
+        },
+        '#um-error-for-confirm_user_password-2679': {
+            original: /Please confirm your password/i,
+            replacement: 'Veuillez confirmer votre mot de passe'
+        }
+    };
+    Object.entries(errorMessageRegCourtierContirmPass).forEach(([selector, {original, replacement}]) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.innerHTML = element.innerHTML.replace(
+                original, 
+                replacement
+            );
+        }
+    });
+
+    // Manejar mensajes de error de reset password
+    const errorMessageResetPassNotMatch = {
+        '#um-error-for-confirm_user_password': {
+            original: /Your passwords do not match/i,
+            replacement: 'Vos mots de passe ne correspondent pas'
+        }
+    };
+    Object.entries(errorMessageResetPassNotMatch).forEach(([selector, {original, replacement}]) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.innerHTML = element.innerHTML.replace(
+                original, 
+                replacement
+            );
+        }
+    });
+    
 });
