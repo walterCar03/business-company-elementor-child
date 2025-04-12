@@ -21,9 +21,4 @@ if ( !function_exists( 'chld_thm_cfg_parent_css' ) ):
 endif;
 add_action( 'wp_enqueue_scripts', 'chld_thm_cfg_parent_css', 10 );
 
-add_action('wp_enqueue_scripts', 'tutsplus_enqueue_custom_js');
-function tutsplus_enqueue_custom_js() {
-    wp_enqueue_script('custom', get_stylesheet_directory_uri().'/js/custom.js');
-}
-
 // END ENQUEUE PARENT ACTION
